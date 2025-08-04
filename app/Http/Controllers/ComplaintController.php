@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Complaint;
 use App\Models\FormField;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Mail;
 
 class ComplaintController extends Controller
@@ -29,6 +30,8 @@ class ComplaintController extends Controller
         ]);
 
         // Kirim email otomatis ke HR
+        $setting = Setting::first();
+        $recipient = $setting->recipient_email ?? config('mail.from.address');
         Mail::raw("Departemen: {$complaint->department}\n\nPesan:\n{$complaint->message}", function ($msg) use ($complaint) {
             $msg->to('dhias.wirawangroup@gmail.com')
                 ->subject("SpeakUp Hub - Aduan Baru");

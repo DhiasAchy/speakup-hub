@@ -33,7 +33,7 @@
   </style>
 </head>
 <body>
-<div class="card p-4 col-md-5 col-sm-10 bg-white">
+<div class="card p-5 col-md-5 col-sm-10 bg-white">
   <div class="logo">💬</div>
   <h3 class="text-center mb-4">SpeakUp Hub</h3>
   @if(session('success'))

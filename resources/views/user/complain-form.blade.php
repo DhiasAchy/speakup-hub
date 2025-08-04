@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/formBuilder/3.8.5/form-render.min.css" />
@@ -55,9 +56,17 @@
         </form>
     </div> --}}
 
-    <div class="card p-2 p-lg-4 col-12 col-md-5 bg-white">
-        <div class="logo">💬</div>
-        <h1 class="text-center">SpeakUp Hub</h1>
+    <div class="card p-2 p-lg-5 col-12 col-md-5 bg-white">
+        {{-- <div class="logo">💬</div> --}}
+        <div class="text-center my-3">
+            @if(!empty($setting->logo))
+                <img src="{{ asset('uploads/'.$setting->logo) }}" alt="Logo" width="60">
+            @else
+                <img src="{{ asset('default-logo.png') }}" alt="Logo" width="60">
+            @endif
+        </div>
+        {{-- <h1 class="text-center">SpeakUp Hub</h1> --}}
+        <h1 class="text-center my-3">{{ $setting->app_name ?? 'SpeakUp Hub' }}</h1>
 
         @if(session('success'))
             <div class="alert">{{ session('success') }}</div>

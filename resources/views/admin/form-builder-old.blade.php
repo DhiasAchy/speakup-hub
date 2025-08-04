@@ -1,28 +1,19 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h2>🛠️ SpeakUp Hub - Form Builder</h2>
-    <div id="build-wrap"></div>
-    <button class="btn btn-primary mt-2 save-btn">Save Form</button>
-    <button class="btn btn-success mt-2 preview-btn">Preview</button>
+    <h2 class="mb-4">🛠️ Form Builder</h2>
 
-    <h3 class="mt-4">Live Preview</h3>
-    <div id="preview-wrap" class="p-3 border bg-white">Form preview will appear here...</div>
+    <div id="build-wrap" style="min-height: 300px; border: 1px solid #ddd; background: #f9f9f9;"></div>
+    <button class="btn btn-success mt-3 save-btn">Save Form</button>
 @endsection
 
-@push('styles')
+@push('scripts')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/formBuilder/3.8.5/form-builder.min.css" />
-    <style>
-        #build-wrap { padding: 10px; min-height: 250px; border: 1px solid #ddd; background: #f9f9f9; }
-    </style>
-@endpush
 
-@push('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://formbuilder.online/assets/js/form-builder.min.js"></script>
-    <script src="https://formbuilder.online/assets/js/form-render.min.js"></script>
 
     <script>
         jQuery($ => {
@@ -39,11 +30,6 @@
                 }, function(res){
                     alert('Form berhasil disimpan!');
                 });
-            });
-
-            $('.preview-btn').click(function() {
-                const schema = formBuilder.actions.getData('json');
-                $('#preview-wrap').formRender({ formData: schema });
             });
         });
     </script>

@@ -8,13 +8,15 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\FormDesign;
 use App\Models\Complaint;
 use App\Models\EmailRecipient;
+use App\Models\Setting;
 
 class FormController extends Controller
 {
     public function index()
     {
+        $setting = Setting::first();
         $design = FormDesign::latest()->first();
-        return view('user.complain-form', compact('design'));
+        return view('user.complain-form', compact('design', 'setting'));
     }
 
     public function submit(Request $request)
